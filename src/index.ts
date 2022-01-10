@@ -41,3 +41,5 @@ const main = async () => {
 main().catch((err) => {
   console.log(err);
 });
+
+// Remember this without the /graphql route at the end of the link it won't work. So if you are working at your own localhost then you should end the link with a /graphql route to access the GraphiQL Interface and get used to it instead of the Apollo Server
