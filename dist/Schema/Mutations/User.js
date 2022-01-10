@@ -52,7 +52,7 @@ exports.UPDATE_PASSWORD = {
                 yield Users_1.Users.update({ username: username }, { password: newPassword });
                 return {
                     successful: true,
-                    message: "PASSOWRD UPDATED",
+                    message: "PASSWORD UPDATED",
                 };
             }
             else {
