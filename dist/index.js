@@ -17,16 +17,20 @@ const express_graphql_1 = require("express-graphql");
 const cors_1 = __importDefault(require("cors"));
 const typeorm_1 = require("typeorm");
 const Schema_1 = require("./Schema");
+const Users_1 = require("./Entities/Users");
+require("dotenv").config();
 const main = () => __awaiter(void 0, void 0, void 0, function* () {
     //mysql part of the project down below
     yield (0, typeorm_1.createConnection)({
+        host: "rgnm2022.ciuaelh6mna8.us-east-1.rds.amazonaws.com",
+        port: 3306,
         type: "mysql",
-        database: "graphqlcrud",
-        username: "root",
-        password: "777GodIsMyProtection@@@",
+        database: "rgnm",
+        username: "admincarl",
+        password: "777GodIsMyProtection",
         logging: true,
-        synchronize: false,
-        entities: [],
+        synchronize: true,
+        entities: [Users_1.Users],
     });
     //express part of the project down below
     const app = (0, express_1.default)();
@@ -36,7 +40,7 @@ const main = () => __awaiter(void 0, void 0, void 0, function* () {
         schema: Schema_1.schema,
         graphiql: true,
     }));
-    app.listen(3001, () => {
+    app.listen(process.env.PORT || 3001, () => {
         console.log("server is running on port 3001");
     });
 });
